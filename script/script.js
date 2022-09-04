@@ -73,3 +73,49 @@ const product = {
         }
     }
 }
+
+
+/* CHEKLIST */
+
+const checkBox = document.querySelector('.receipt'),
+    checkBoxBtn = document.querySelector('.addCart'),
+    receiptWindow = document.querySelector('.receipt__window')
+;
+
+
+
+
+window.addEventListener('click', (e) => {
+    if(e.target.classList.contains('receipt')) {
+        checkBox.classList.remove('active')
+        checkBox.classList.remove('receipt')
+        receiptWindow.classList.add('active')
+    }else {
+        ''
+    }
+})
+
+
+checkBoxBtn.addEventListener('click', () => {
+    checkBox.classList.add('receipt')
+    checkBox.classList.add('active')
+})
+
+
+/* PLUS MINUS BTN'S */
+
+const productAmount = document.querySelectorAll('.main__product-num')
+
+
+
+window.addEventListener('click', (e) => {
+    if(e.target.classList.contains('plus')) {
+        let parent = e.target.closest('.main__product')
+        let parentId = parent.getAttribute('id')
+        product[parentId].amount++
+        
+        productAmount.forEach((el) => {
+            el.innerHTML = product[parentId].amount
+        })
+    }
+})
